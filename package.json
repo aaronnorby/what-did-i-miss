@@ -5,13 +5,16 @@
   "description": "see what episodes you missed last week",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Aaron Norby",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^2.10.0",
+    "body-parser": "^1.14.0",
     "express": "^4.13.3",
     "mysql": "^2.9.0",
+    "request": "^2.62.0",
     "sequelize": "^3.9.0"
   }
 }

@@ -26,12 +26,9 @@ Show.sync();
 /*
 * Test if this works by creating some rows 
 *
-* Show.create({showname: 'All things considered'});
-* Story.create({url: 'www.npr.com', teaser: 'a great story', storyDate: '2015-08-01', mp3Url: 'www.mp3.com'});
-*
-* Show.create({showname: 'Morning Edition'})
+* Show.create({showname: 'Test Show'})
 *   .then(function(show) {
-*     Story.create({url: 'www', teaser: 'another story', storyDate: '2015-08-02', mpsUrl: 'www', ShowId: show.id});
+*     Story.create({url: 'npr.test.com', teaser: 'a great story', storyDate: '2015-08-02', mp3Url: 'testaudio.com', ShowId: show.id});
 * });
 */
 
