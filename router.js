@@ -35,17 +35,26 @@ router.get('/stories/saved', function(req, res) {
     });
 });
 
+// allow saving of stories
+router.post('/stories/');
+
+// add a show to the database
 router.post('/shows', function(req, res) {
   var show = req.body.title;
-  
-
-
-  console.log('show ' + show + ' posted');
-  res.sendStatus(201);
+  db.Show.create({showname: req.body.showname})
+    .then(function(show) {
+      res.sendStatus(201);
+    })
+    .catch(function(err) {
+      console.log('error saving show to db: ', err);
+      res.sendStatus(500);
+    });
 });
 
+// delete stories when listened to/boring
 router.delete('/stories/:id');  // get id with req.params.id
 
+// remove a show from the user's list
 router.delete('/shows');
 
 
