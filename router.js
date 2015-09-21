@@ -10,6 +10,12 @@ var utils = require('./utils.js');
 * The Story table should really just be for saved stories
 */
 
+// root route
+router.get('/', function(req, res) {
+  res.sendFile('./public/index.html');
+});
+
+
 // use request to actually get the stories from past week of a given show
 router.get('/stories/:show_id', function(req, res) {
   utils.getStories(req.params.show_id).then(function(body) {

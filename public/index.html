@@ -5,6 +5,9 @@
 
     <title>What Did I Miss?</title>
     <!--lib scripts --> 
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
   </head>
 
   <body>
@@ -16,8 +19,22 @@
     
     
     <!--client scripts-->
+    <script src="client/AppModel.js"></script>
+    <script src="client/StoryModel.js"></script>
+
+    <script src="client/Show.js"></script>
+
+    <script src="client/ShowView.js"></script>
+    <script src="client/StoryView.js"></script>
+    <script src="client/AppView.js"></script>
+
     <script>
+      var story = new StoryModel({title: 'Fresh Air'});
       
+      var showCollection = new Show();
+      showCollection.add(story);
+      var showView = new ShowView({collection: showCollection});
+      $('body').append(showView.render());
     </script>  
   </body>
 </html>
