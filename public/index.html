@@ -5,6 +5,7 @@
 
     <title>What Did I Miss?</title>
     <!--lib scripts --> 
+    <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
@@ -14,8 +15,19 @@
 
     <h1>What did I miss?</h1>
     
-    <div id="shows"></div>
-    
+    <script id="story-template" type="text/x-handlebars-template">
+      <div class="story">
+        <p>The story: {{teaser.$text}}</p>
+        <p>Story Date: {{storyDate.$text}}</p>
+        <p>Show link: {{link.[1].$text}}</p>
+      </div>
+    </script>
+
+
+    <script>
+      var Templates = {};
+      Templates.story = $('#story-template').html();
+    </script>
     
     
     <!--client scripts-->
@@ -29,10 +41,12 @@
     <script src="client/AppView.js"></script>
 
     <script>
-      var story = new StoryModel({title: 'Fresh Air'});
+      var Templates = {};
+      
+      //var story = new StoryModel({title: 'Fresh Air', host: 'Terry Gross'});
       
       var showCollection = new Show();
-      showCollection.add(story);
+      //showCollection.add(story);
       var showView = new ShowView({collection: showCollection});
       $('body').append(showView.render());
     </script>  
