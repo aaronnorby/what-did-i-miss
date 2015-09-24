@@ -17,9 +17,10 @@
     
     <script id="story-template" type="text/x-handlebars-template">
       <div class="story">
-        <p>The story: {{teaser.$text}}</p>
-        <p>Story Date: {{storyDate.$text}}</p>
-        <p>Show link: {{link.[1].$text}}</p>
+        <p>The story: {{{teaser.$text}}}</p>
+        <p>Story Date: {{{storyDate.$text}}}</p>
+        <p>Show link: <a href="{{link.[0].$text}}">link</a></p>
+        <p>mp4 audio link: <a href="{{audio.[0].format.mp4.$text}}">link</a></p>
       </div>
     </script>
 
