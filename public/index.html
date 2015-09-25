@@ -17,6 +17,7 @@
     
     <script id="story-template" type="text/x-handlebars-template">
       <div class="story">
+        {{! triple stache won't escape html, need not to b/c npr sends html -}}
         <p>The story: {{{teaser.$text}}}</p>
         <p>Story Date: {{{storyDate.$text}}}</p>
         <p>Show link: <a href="{{link.[0].$text}}">link</a></p>
@@ -24,10 +25,27 @@
       </div>
     </script>
 
+    <script id="app-template" type="text/x-handlebars-template">
+      <div class="menu-bar">
+        <span>All Things Considered | </span>
+        <span>Morning Edition | </span>
+        <span>Fresh Air | </span>
+        <span>Here and Now | </span>
+        <span>Latino USA | </span>
+        <span>Weekend Edition Saturday | </span>
+        <span>Weekend Edition Sunday</span>
+      </div>
+      <div id="show">
+      </div>
+    </script>
+
 
     <script>
       var Templates = {};
       Templates.story = $('#story-template').html();
+      Templates.app = $('#app-template').html();
+
+      // add a Handlbars.registerHelper to format the date properly 
     </script>
     
     
@@ -47,9 +65,14 @@
       //var story = new StoryModel({title: 'Fresh Air', host: 'Terry Gross'});
       
       var showCollection = new Show();
+
+      var appModel = new AppModel({show: showCollection});
+      var appView = new AppView({model: appModel});
+      $('body').append(appView.render());
+
       //showCollection.add(story);
-      var showView = new ShowView({collection: showCollection});
-      $('body').append(showView.render());
+      // var showView = new ShowView({collection: showCollection});
+      // $('body').append(showView.render());
     </script>  
   </body>
 </html>
