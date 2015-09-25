@@ -9,6 +9,8 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+
   </head>
 
   <body>
@@ -18,14 +20,12 @@
     <script id="story-template" type="text/x-handlebars-template">
       <div class="story">
         {{! triple stache won't escape html, need not to b/c npr sends html -}}
-        <p>The story: {{{teaser.$text}}}</p>
-        <p>Story Date: {{{storyDate.$text}}}</p>
-        <p>Show link: <a href="{{link.[0].$text}}">link</a></p>
-        <p>mp4 audio link: <a href="{{audio.[0].format.mp4.$text}}">link</a></p>
+        <p><strong>The story:</strong> {{{teaser.$text}}}</p>
+        <p><strong>Story Date:</strong> {{{dateformat storyDate.$text}}}</p>
+        <p><strong>Show link:</strong> <a href="{{link.[0].$text}}">link</a></p>
+        <p><strong>mp4 audio link:</strong> <a href="{{audio.[0].format.mp4.$text}}">link</a></p>
       </div>
     </script>
-
-    
 
     <script id="app-template" type="text/x-handlebars-template">
       <div class="menu-bar">
@@ -47,7 +47,12 @@
       Templates.story = $('#story-template').html();
       Templates.app = $('#app-template').html();
 
+      // moment("Thu, 24 Sep 2015 19:36:55 -0400", "ddd, D MMM YYYY HH:mm:ss Z")
+
       // add a Handlbars.registerHelper to format the date properly 
+      Handlebars.registerHelper('dateformat', function(nprDate) {
+        return moment(nprDate, "ddd, D MMM YYYY HH:mm:ss Z").format("MMMM Do, YYYY h:mm a"); 
+      });
     </script>
     
     
