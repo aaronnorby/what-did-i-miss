@@ -1,0 +1,11 @@
+.menu-item {
+  cursor: default;
+}
+
+.menu-item:hover {
+  background: orange;
+}
+
+.selected {
+  background: orange;
+}

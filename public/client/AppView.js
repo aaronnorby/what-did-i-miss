@@ -11,10 +11,12 @@ var AppView = Backbone.View.extend({
 
 
   swap: function(e) {
-    console.log($(e.currentTarget).data('showid'));
     var id = $(e.currentTarget).data('showid');
     this.model.get('show').url = '/api/stories/' + id;
     this.model.get('show').fetch();
+    $('.selected').removeClass('selected');
+    $(e.currentTarget).addClass('selected');
+    
   },
 
   render: function() {
