@@ -25,17 +25,18 @@
         <p><strong>Story Date:</strong> {{{dateformat storyDate.$text}}}</p>
         <p><strong>Show link:</strong> <a href="{{link.[0].$text}}">link</a></p>
         <p><strong>mp4 audio link:</strong> <a href="{{audio.[0].format.mp4.$text}}">link</a></p>
+        <hr>
       </div>
     </script>
 
     <script id="app-template" type="text/x-handlebars-template">
       <div class="menu-bar">
-        <span class="menu-item" data-showid="2">All Things Considered | </span>
-        <span class="menu-item" data-showid="3">Morning Edition | </span>
-        <span class="menu-item" data-showid="13">Fresh Air | </span>
-        <span class="menu-item" data-showid="60">Here and Now | </span>
-        <span class="menu-item" data-showid="22">Latino USA | </span>
-        <span class="menu-item" data-showid="7">Weekend Edition Saturday | </span>
+        <span class="menu-item" data-showid="2">All Things Considered</span>|
+        <span class="menu-item" data-showid="3">Morning Edition</span>|
+        <span class="menu-item" data-showid="13">Fresh Air</span>|
+        <span class="menu-item" data-showid="60">Here and Now</span>|
+        <span class="menu-item" data-showid="22">Latino USA</span>|
+        <span class="menu-item" data-showid="7">Weekend Edition Saturday</span>|
         <span class="menu-item" data-showid="10">Weekend Edition Sunday</span>
       </div>
       <div id="show">
@@ -47,8 +48,6 @@
       var Templates = {};
       Templates.story = $('#story-template').html();
       Templates.app = $('#app-template').html();
-
-      // moment("Thu, 24 Sep 2015 19:36:55 -0400", "ddd, D MMM YYYY HH:mm:ss Z")
 
       // add a Handlbars.registerHelper to format the date properly 
       Handlebars.registerHelper('dateformat', function(nprDate) {
