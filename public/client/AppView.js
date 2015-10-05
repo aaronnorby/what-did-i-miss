@@ -25,12 +25,3 @@ var AppView = Backbone.View.extend({
     return this.el;
   }
 });
-
-
-// 'click .atc': this.swap('atc'),
-//     'click .me': this.swap('me'),
-//     'click .fa': this.swap('fa'),
-//     'click .han': this.swap('han'),
-//     'click .lusa': this.swap('lusa'),
-//     'click .wesat': this.swap('wesat'),
-//     'click .wesun': this.swap('wesun')
