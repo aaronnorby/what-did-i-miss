@@ -1,11 +1,8 @@
-.menu-item {
-  cursor: default;
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.menu-item:hover {
-  background: orange;
-}
-
-.selected {
-  background: orange;
+.navbar {
+  margin-bottom: 20px;
 }
