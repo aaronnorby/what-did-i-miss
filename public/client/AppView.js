@@ -20,7 +20,9 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.template());
+    var selected = this.$el.find('.selected a').text();
+    console.log("sel: ", selected);
+    this.$el.html(this.template({selectedShow: selected}));
     this.$el.find('#show').append(this.showview.render());
     return this.el;
   }
