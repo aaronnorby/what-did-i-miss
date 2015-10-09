@@ -3,6 +3,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.showview = new ShowView({collection: this.model.get('show')});
+    this.headerView = new ShowHeaderView({model: this.model.get('title')});
   },
 
   events: {
@@ -16,14 +17,14 @@ var AppView = Backbone.View.extend({
     this.model.get('show').fetch();
     $('.selected').removeClass('selected');
     $(e.currentTarget).addClass('selected');
-    
+
+    var title = $(e.currentTarget).find('a').html();
+    this.model.get('title').set({"name": title});
   },
 
   render: function() {
-    var selected = this.$el.find('.selected a').text();
-    console.log("sel: ", selected);
-    this.$el.html(this.template({selectedShow: selected}));
-    this.$el.find('#show').append(this.showview.render());
+    this.$el.html(this.template());
+    this.$el.find('#show').append(this.headerView.render()).append(this.showview.render());
     return this.el;
   }
 });

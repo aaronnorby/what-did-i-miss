@@ -36,6 +36,11 @@
       </div>
     </script>
 
+    <script id="title-template" type="text/x-handlebars-template">
+      <h2>{{name}}</h2>
+
+      <hr>
+    </script>
 
     <script id="app-template" type="text/x-handlebars-template">
       <div class="container">
@@ -70,7 +75,7 @@
       </div>
 
       <div class="jumbotron" id="show">
-        <h2>{{selectedShow}}</h2>
+        
       </div>
 
       </div> <!--/container -->
@@ -84,6 +89,7 @@
       var Templates = {};
       Templates.story = $('#story-template').html();
       Templates.app = $('#app-template').html();
+      Templates.title = $('#title-template').html();
 
       // add a Handlbars.registerHelper to format the date properly 
       Handlebars.registerHelper('dateformat', function(nprDate) {
@@ -95,10 +101,12 @@
     <!--client scripts-->
     <script src="client/AppModel.js"></script>
     <script src="client/StoryModel.js"></script>
+    <script src="client/ShowHeader.js"></script>
 
     <script src="client/Show.js"></script>
 
     <script src="client/ShowView.js"></script>
+    <script src="client/ShowHeaderView.js"></script>
     <script src="client/StoryView.js"></script>
     <script src="client/AppView.js"></script>
 
@@ -108,8 +116,9 @@
       //var story = new StoryModel({title: 'Fresh Air', host: 'Terry Gross'});
       
       var showCollection = new Show();
+      var title = new ShowHeader();
 
-      var appModel = new AppModel({show: showCollection});
+      var appModel = new AppModel({show: showCollection, title: title});
       var appView = new AppView({model: appModel});
       $('body').append(appView.render());
 
